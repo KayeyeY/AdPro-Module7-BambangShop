@@ -77,7 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Dalam kasus ini, penggunaan interface (trait) tidak diperlukan, dan cukup dengan satu Model struct saja. Alasannya, hanya ada satu observer, yaitu class Subscriber, sehingga tidak ada kebutuhan untuk mendukung berbagai jenis observer. Interface akan lebih berguna jika terdapat banyak observer dengan tipe yang berbeda-beda, yang memerlukan fleksibilitas dalam implementasi.
 
+2. Saya rasa penggunaan DashMap sudah tepat. Jika menggunakan Vec, kita harus membuat dua array terpisah untuk menyimpan id dan url, serta melakukan iterasi untuk menemukan pasangan nilai tersebut. Dengan DashMap, kita dapat menyimpan id dan url dalam satu struktur, sehingga lebih efisien dan mudah digunakan.
+
+3. Aplikasi BambangShop menggunakan multi-threading, sehingga lebih baik menggunakan DashMap dibandingkan dengan Singleton pattern. DashMap adalah thread-safe HashMap yang mendukung concurrent access, memungkinkan data SUBSCRIBERS diakses secara bersamaan tanpa masalah. Sebaliknya, pendekatan Singleton pattern hanya menciptakan satu instance selama program berjalan, yang dalam lingkungan multi-threading memerlukan mekanisme locking. Hal ini dapat meningkatkan kompleksitas kode dan berisiko menyebabkan deadlock, sehingga penggunaan DashMap menjadi pilihan yang lebih efisien.
 #### Reflection Publisher-2
 
 #### Reflection Publisher-3
