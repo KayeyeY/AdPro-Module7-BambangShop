@@ -89,3 +89,9 @@ This is the place for you to write reflections:
 3. Dengan Postman, saya dapat menguji API secara efisien, memeriksa hasil dari setiap request, dan memastikan bahwa response yang diterima sudah sesuai dengan ekspektasi. Salah satu fitur utamanya adalah Collection, yang memungkinkan pengelompokan request ke dalam folder agar lebih terorganisir. Selain itu, fitur Environment memungkinkan penyimpanan variabel yang sering digunakan, sehingga mempermudah pengujian tanpa perlu mengubah nilai secara manual.
 
 #### Reflection Publisher-3
+1. Tutorial ini menggunakan variasi Observer Pattern dengan pendekatan Push Model, di mana Publisher secara langsung mengirimkan notifikasi ke seluruh Subscriber setiap kali terjadi CRUD pada Product melalui pemanggilan method notify pada NotificationService.
+2. Pull Model:
+- Keuntungan: Observer/Subscriber memiliki kendali atas notifikasi yang diterima dari Publisher, memungkinkan mereka memilih informasi yang diinginkan (lebih fleksibel).
+
+- Kelemahan: Observer/Subscriber harus aktif dalam mengambil data. Jika tidak, mereka bisa saja melewatkan notifikasi yang diharapkan karena perlu melakukan pull secara manual.
+3. Proses akan berjalan secara sekuensial dan memerlukan waktu yang lama. Bottle-neck terjadi ketika Publisher mengirimkan notifikasi ke seluruh Subscriber dalam method notify() pada class NotificationService. Akibatnya, pengiriman notifikasi harus selesai terlebih dahulu sebelum proses lain dapat dilanjutkan.
